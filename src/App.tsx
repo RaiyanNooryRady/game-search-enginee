@@ -1,35 +1,24 @@
 import './App.css'
-
-interface TestProps{
-  text:string;
-  color:string;
-  children?: React.ReactNode;
+import GameCard from './components/GameCard'
+const game1={
+  url:"https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png",
+  title:"Google",
+  description:"Google is a search engine",
+  releaseDate:"2025-01-01"
+}
+const game2={
+  url:"https://picsum.photos/id/237/200/300",
+  title:"Soogle",
+  description:"Soogle is a search engine",
+  releaseDate:"2025-01-06"
 }
 function App() {
   return (
     <>
-      <Test text="Hello World" color="red"/>
-      <Test text="Hello World 2" color="blue"/>
-      <Test text="Hello World 3" color="green"/>
-      <Test text="Hello World 4" color="yellow">
-        <h2>This is a yellow test</h2>
-      </Test>
-      <Test text="Hello World 5" color="purple"/>
-      <Test text="Hello World 6" color="orange"/>
-      <Test text="Hello World 7" color="red"/>
-      <Test text="Hello World 8" color="brown"> 
-        <h2>This is a brown test</h2>
-      </Test>
+      <GameCard game={game1}/>
+      <GameCard game={game2}/>
     </>
   )
-}
-function Test({text,color,children}:TestProps){
-  return(
-    <div>
-      <h1 style={{color:color}}>{text}</h1>
-      {children}
-    </div>
-  );
 }
 
 export default App
