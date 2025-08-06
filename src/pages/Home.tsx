@@ -6,7 +6,7 @@ const Home = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const handleSearch = (e: React.FormEvent) => {
         e.preventDefault();
-        alert(searchQuery);
+        alert('you searched for '+searchQuery);
     }
 
     return (
@@ -19,6 +19,9 @@ const Home = () => {
             <div className="games-grid">
                 {
                     games.map((game) => {
+                        if(searchQuery && !game.title.toLowerCase().includes(searchQuery.toLowerCase())){
+                            return null;
+                        }
                         return <GameCard game={game} key={game.id} />
                     })
                 }

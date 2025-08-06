@@ -62,7 +62,22 @@ const games: Game[] = [
         title: "Assassin's Creed Valhalla",
         description: "Become Eivor, a legendary Viking raider on a quest for glory. Explore England's Dark Ages as you raid your enemies.",
         releaseDate: "2020-11-10"
+    },
+    {
+        id: 9,
+        url: "https://picsum.photos/id/9/300/400",
+        title: "The Last of Us",
+        description: "A story-driven open world RPG set in a visually stunning fantasy universe full of meaningful choices and impactful consequences.",
+        releaseDate: "2013-06-14"
+    },
+    {
+        id: 10,
+        url: "https://picsum.photos/id/10/300/400",
+        title: "The Lost of Us",
+        description: "A story-driven open world RPG set in a visually stunning fantasy universe full of meaningful choices and impactful consequences.",
+        releaseDate: "2013-06-14"
     }
+    
 ];
 
 export default games;
