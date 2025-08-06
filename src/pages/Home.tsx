@@ -4,13 +4,16 @@ const Home = () => {
 
 
     return (
-        <div>
-            <h1>Games</h1>
-            {
-                games.map((game)=>{
-                    return <GameCard game={game}/>
-                })
-            }
+        <div className="home">
+            <h1 className="home-title">Games</h1>
+            <div className="games-grid">
+                {
+                    games.map((game) => {
+                        return <GameCard game={game} />
+                    })
+                }
+            </div>
+
 
         </div>
 
