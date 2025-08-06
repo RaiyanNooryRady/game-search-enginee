@@ -10,7 +10,7 @@ interface GameCardProps {
 const GameCard = ({ game }: GameCardProps) => {
 
   const onFavouriteClick = () => {
-    alert("Favourite added");
+    alert(game.title+" is added as favourite!");
   }
   return (
     <div className="game-card">
