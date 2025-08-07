@@ -1,6 +1,7 @@
 import games from '../assets/games'
 import GameCard from '../components/GameCard'
 import { useState } from 'react'
+import '../css/Home.css'
 const Home = () => {
 
     const [searchQuery, setSearchQuery] = useState("");

@@ -1,3 +1,4 @@
+import '../css/GameCard.css'
 interface GameCardProps {
   game: {
     url: string;
