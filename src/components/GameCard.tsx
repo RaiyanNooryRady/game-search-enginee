@@ -1,6 +1,8 @@
 import '../css/GameCard.css'
+import { useGameContext } from '../contexts/GameContext'
 interface GameCardProps {
   game: {
+    id: number;
     background_image: string;
     name: string;
     rating: number;
@@ -14,15 +16,24 @@ interface GameCardProps {
 
 const GameCard = ({ game }: GameCardProps) => {
 
-  const onFavouriteClick = () => {
-    alert(game.name+" is added as favourite!");
+  const { addFavorite, removeFavorite, isFavorite } = useGameContext();
+  const favorite = isFavorite(game.id);
+  const onFavouriteClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    if(favorite){
+      removeFavorite(game);
+      alert(game.name+" is removed from favourites!");
+    }else{
+      addFavorite(game);
+      alert(game.name+" is added as favourite!");
+    }
   }
   return (
     <div className="game-card">
       <div className="game-poster">
         <img src={game.background_image} alt={game.name} />
         <div className="game-overlay">
-          <button className="favourite-btn" onClick={onFavouriteClick}>❤</button>
+          <button className={`favourite-btn ${favorite ? 'active' : ''}`} onClick={onFavouriteClick}>❤</button>
         </div>
       </div>
       <div className="game-info">
