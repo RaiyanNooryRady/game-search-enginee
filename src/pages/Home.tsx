@@ -36,6 +36,8 @@ const Home = () => {
                 <input type="text" placeholder='Search games' className='search-input' value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
                 <button type='submit' className='search-button'>Search</button>
             </form>
+            {loading && <div className="loading">Loading games...</div>}
+            {error && <div className="error">Error loading games: {error.message}</div>}
             <div className="games-grid">
                 {
                     games.map((game) => {
