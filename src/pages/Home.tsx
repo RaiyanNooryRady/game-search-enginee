@@ -1,17 +1,34 @@
-import games from '../assets/games'
+//import games from '../assets/games'
 import GameCard from '../components/GameCard'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import '../css/Home.css'
-import { getNewGames } from '../services/api'
+import { getAllGames } from '../services/api'
+
 const Home = () => {
 
     const [searchQuery, setSearchQuery] = useState("");
+    const [games, setGames] = useState<any[]>([]);
+    const [error, setError] = useState<Error | null>(null);
+    const [loading, setLoading] = useState(true);
+    useEffect(() => {
+        const loadAllGames = async () => {
+            try {
+                const dataAllGames = await getAllGames();
+                setGames(dataAllGames);
+            } catch (error) {
+                console.error('Failed to fetch games', error);
+                setError(error as Error);
+            }
+            finally{
+                setLoading(false);
+            }
+        }
+        loadAllGames();
+    }, []);
     const handleSearch = (e: React.FormEvent) => {
         e.preventDefault();
         alert('you searched for ' + searchQuery);
     }
-    getNewGames().then(data => console.log(data[0].title));
-
     return (
         <div className="home">
             <h1 className="home-title">Games</h1>
@@ -22,7 +39,7 @@ const Home = () => {
             <div className="games-grid">
                 {
                     games.map((game) => {
-                        if (searchQuery && !game.title.toLowerCase().includes(searchQuery.toLowerCase())) {
+                        if (searchQuery && !game.name.toLowerCase().includes(searchQuery.toLowerCase())) {
                             return null;
                         }
                         return <GameCard game={game} key={game.id} />

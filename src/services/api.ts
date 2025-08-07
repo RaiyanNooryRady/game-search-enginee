@@ -1,12 +1,7 @@
-const BASE_URL = "https://www.freetogame.com/api/games";
-
-export const getNewGames = async () =>{
-    const response = await fetch(`${BASE_URL}?sort-by=release_date`);
+const BASE_URL = "https://api.rawg.io/api/games";
+const API_KEY = "3e5a4e4a598d44e5b30c4057f15dc8e6";
+export const getAllGames = async () =>{
+    const response = await fetch(`${BASE_URL}?key=${API_KEY}`);
     const data = await response.json();
-    return data;
-}
-export const searchGames = async (query: string) => {
-    const response = await fetch(`${BASE_URL}?search=${query}`);
-    const data = await response.json();
-    return data;
+    return data.results;
 }
