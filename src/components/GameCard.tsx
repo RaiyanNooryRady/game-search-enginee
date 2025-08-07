@@ -1,10 +1,10 @@
 import '../css/GameCard.css'
 interface GameCardProps {
   game: {
-    url: string;
+    game_url: string;
     title: string;
-    description: string;
-    releaseDate: string;
+    short_description: string;
+    release_date: string;
   }
 }
 
@@ -16,15 +16,15 @@ const GameCard = ({ game }: GameCardProps) => {
   return (
     <div className="game-card">
       <div className="game-poster">
-        <img src={game.url} alt={game.title} />
+        <img src={game.game_url} alt={game.title} />
         <div className="game-overlay">
           <button className="favourite-btn" onClick={onFavouriteClick}>❤</button>
         </div>
       </div>
       <div className="game-info">
         <h3>{game.title}</h3>
-        <p>{game.description}</p>
-        <p>{game.releaseDate}</p>
+        <p>{game.short_description}</p>
+        <p>{game.release_date}</p>
       </div>
     </div>
   );

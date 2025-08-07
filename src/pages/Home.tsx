@@ -2,25 +2,27 @@ import games from '../assets/games'
 import GameCard from '../components/GameCard'
 import { useState } from 'react'
 import '../css/Home.css'
+import { getNewGames } from '../services/api'
 const Home = () => {
 
     const [searchQuery, setSearchQuery] = useState("");
     const handleSearch = (e: React.FormEvent) => {
         e.preventDefault();
-        alert('you searched for '+searchQuery);
+        alert('you searched for ' + searchQuery);
     }
+    getNewGames().then(data => console.log(data[0].title));
 
     return (
         <div className="home">
             <h1 className="home-title">Games</h1>
             <form onSubmit={handleSearch} className='search-form' action="">
-                <input type="text" placeholder='Search games' className='search-input' value={searchQuery} onChange={(e)=>setSearchQuery(e.target.value)} />
+                <input type="text" placeholder='Search games' className='search-input' value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
                 <button type='submit' className='search-button'>Search</button>
             </form>
             <div className="games-grid">
                 {
                     games.map((game) => {
-                        if(searchQuery && !game.title.toLowerCase().includes(searchQuery.toLowerCase())){
+                        if (searchQuery && !game.title.toLowerCase().includes(searchQuery.toLowerCase())) {
                             return null;
                         }
                         return <GameCard game={game} key={game.id} />
